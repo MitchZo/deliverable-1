@@ -6,21 +6,28 @@ namespace Currency_Format_Converter
     {
         static void Main(string[] args)
         {
-            Decimal? amt1 = null;
-            Decimal? amt2 = null;
-            Decimal? amt3 = null;
+            Decimal?[] amounts = new Decimal?[3];
 
-            while (amt1 == null) 
+            //i defines the number of times the loop has been run in addition to the position in the array
+            for (int i = 0; i < amounts.Length; i++)
             {
-                try
+                //run the try catch until the user gives us what we want
+                while (amounts[i] == null)
                 {
-                    Console.WriteLine("Welcome to the adding machine. Please enter value #1 in the format of XXX.XX.";
-                    string response = Console.ReadLine();
-                    amt1 = decimal.Parse(response);
-                }
-                catch (Exception)
-                {
-                    Console.WriteLine("That is not the correct format. Please try again.");
+                    if (i == 0)
+                        Console.WriteLine("Welcome to the adding machine.");
+                    try
+                    {
+                        Console.WriteLine("Please enter value #{0} in the format of XXX.XX.",i + 1);
+                        string response = Console.ReadLine();
+                        amounts[i] = decimal.Parse(response);
+                    }
+                    catch (Exception)
+                    {
+                        Console.WriteLine("That is not the correct format. Please try again.");
+                    }
+                    //take this out before submitting
+                    Console.WriteLine($"{amounts[0].ToString()} {amounts[1].ToString()} {amounts[2].ToString()}");
                 }
             }
         }
