@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 
 namespace Currency_Format_Converter
 {
@@ -51,6 +52,13 @@ namespace Currency_Format_Converter
             Console.WriteLine($@"min: {min}
 max: {max}
 avg: {avg}");
+
+            //Display the total as United States Dollar, Swedish Krona, Japanese Yen, and Thai Baht
+
+            Console.WriteLine($@"United States Dollar: {total.ToString("C", CultureInfo.CreateSpecificCulture("en-US"))}");
+            Console.WriteLine($@"Swedish Krona: {total.ToString("C", CultureInfo.CreateSpecificCulture("sv-SE"))}");
+            Console.WriteLine($@"Japanese Yen: {total.ToString("C", CultureInfo.CreateSpecificCulture("ja-JP"))}");
+            Console.WriteLine($@"Thai Baht: {total.ToString("C", CultureInfo.CreateSpecificCulture("th-TH"))}");
         }
     }
 }
