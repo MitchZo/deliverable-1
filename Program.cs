@@ -55,6 +55,7 @@ avg: {avg}");
 
             //Display the total as United States Dollar, Swedish Krona, Japanese Yen, and Thai Baht
 
+            Console.OutputEncoding = System.Text.Encoding.UTF8;
             Console.WriteLine($@"United States Dollar: {total.ToString("C", CultureInfo.CreateSpecificCulture("en-US"))}");
             Console.WriteLine($@"Swedish Krona: {total.ToString("C", CultureInfo.CreateSpecificCulture("sv-SE"))}");
             Console.WriteLine($@"Japanese Yen: {total.ToString("C", CultureInfo.CreateSpecificCulture("ja-JP"))}");
