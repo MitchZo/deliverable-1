@@ -9,21 +9,32 @@ namespace Currency_Format_Converter
             decimal amt1 = 0;
             decimal amt2 = 0;
             decimal amt3 = 0;
+            int value = 1;
+            string response;
 
-            Console.WriteLine("Welcome to the adding machine. Please enter your first value in the format of XXX.XX.");
-            string response = Console.ReadLine();
+            Console.WriteLine("Welcome to the adding machine. Please enter value #{0} in the format of XXX.XX.", value);
+            response = Console.ReadLine();
 
-
-                if (decimal.TryParse(response, out amt1))
-                {
+            try
+            {
                 amt1 = decimal.Parse(response);
-                 Console.WriteLine("Please enter your second number in the format of XXX.XX.");
-                }
-                else
+            }
+            catch (Exception)
+            {
+                while (decimal.TryParse(response, out amt1))
                 {
-                Console.WriteLine("That is not the correct format. Please try again.");
-                Console.ReadLine()
+                    Console.WriteLine("That is not the correct format. Please try again.");
+                    //remove "+ amt1" before submitting 
+                    Console.WriteLine("Please enter value #{0} in the format of XXX.XX." + amt1, value);
+                    response = Console.ReadLine();
                 }
+            }
+            finally
+            {
+                    value ++;
+                //remove "+ amt1" before submitting
+                Console.WriteLine("Please enter value #{0} in the format of XXX.XX." + amt1, value);
+            }
         }
     }
 }
